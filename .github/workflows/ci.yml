@@ -1,0 +1,31 @@
+name: CI Pipeline (WIP)
+
+on:
+    push:
+        branches:
+            - main
+        paths-ignore:
+            - 'docs/**'
+            - '**/*.md'
+            - '**/*.txt'
+            - 'CHANGELOG.md'
+            - '.github/**'
+
+    pull_request:
+        branches:
+            - main
+        paths-ignore:
+            - 'docs/**'
+            - '**/*.md'
+            - '**/*.txt'
+            - 'CHANGELOG.md'
+            - '.github/**'
+
+jobs:
+    placeholder:
+        name: "🚧 CI Pipeline Not Yet Implemented"
+        runs-on: ubuntu-latest
+        steps:
+            - name: No-op
+              run: echo "CI pipeline is under development. No tasks executed yet."
+  
