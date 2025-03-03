@@ -1,0 +1,67 @@
+---
+name: 🌟 Good First Issue  
+description: A starter task for new contributors.  
+title: "🌟 [Good First Issue]: "  
+labels: ["good first issue"]  
+body:  
+  - type: markdown  
+    attributes:  
+      value: |  
+        Welcome! 👋 This issue is ideal for first-time contributors.  
+        Need help? Comment below or check our [CONTRIBUTING.md](link-to-contributing-file).  
+
+  - type: textarea  
+    attributes:  
+      label: Task Description  
+      description: A simple explanation of what needs to be done.  
+      placeholder: |  
+        Example:  
+        - Fix a typo in the README.  
+        - Add a test case for `Geocoder.validateAddress()`.  
+    validations:  
+      required: true  
+
+  - type: textarea  
+    attributes:  
+      label: Steps to Complete  
+      description: Clear, numbered steps to finish the task.  
+      placeholder: |  
+        1. Fork the repository.  
+        2. Locate the typo in `README.md`.  
+        3. Submit a PR with your fix.  
+
+  - type: checkboxes  
+    attributes:  
+      label: Skills Needed  
+      description: Basic skills required for this task.  
+      options:  
+        - label: Basic Git (clone, commit, PR)  
+        - label: Familiarity with Markdown  
+        - label: Introductory TypeScript  
+
+  - type: checkboxes  
+    attributes:  
+      label: Common Subtasks  
+      options:  
+        - label: Update documentation  
+        - label: Write unit tests  
+        - label: Fix formatting  
+
+  - type: textarea  
+    attributes:  
+      label: Helpful Resources  
+      description: Links to relevant docs or code sections.  
+      placeholder: |  
+        - [Contributing Guide](link-to-contributing-file)  
+        - [`Geocoder` Class Source Code](link-to-code)  
+
+  - type: dropdown  
+    attributes:  
+      label: Estimated Effort  
+      options:  
+        - "⏱️ Quick (≤30 mins)"  
+        - "🕒 Moderate (1-2 hours)"  
+        - "⏳ Longer (3+ hours)"  
+    validations:  
+      required: true  
+---
