@@ -1,0 +1,100 @@
+---
+name: 🔒 Security  
+description: Report security vulnerabilities, compliance issues, or security enhancements.  
+title: "🔒 [Security]: "  
+labels: ["security", "compliance"]  
+body:  
+  - type: markdown  
+    attributes:  
+      value: "⚠️ **Responsible Disclosure**: Do not disclose details publicly until resolved."  
+
+  - type: textarea  
+    attributes:  
+      label: Description  
+      description: Describe the security issue or enhancement.  
+      placeholder: |  
+        Example:  
+        - API key exposed in logs.  
+        - Missing rate limiting on authentication endpoints.  
+    validations:  
+      required: true  
+
+  - type: textarea  
+    attributes:  
+      label: Steps to Reproduce  
+      description: How to replicate the vulnerability (if applicable).  
+      placeholder: |  
+        1. Step 1  
+        2. Step 2  
+
+  - type: textarea  
+    attributes:  
+      label: Affected Components  
+      description: Specific modules, APIs, or services impacted.  
+      placeholder: |  
+        - `Geocoder` class  
+        - `/api/search` endpoint  
+
+  - type: dropdown  
+    attributes:  
+      label: Vulnerability Type  
+      description: CWE classification (if applicable).  
+      options:  
+        - "CWE-79: Cross-site Scripting (XSS)"  
+        - "CWE-89: SQL Injection"  
+        - "CWE-200: Information Exposure"  
+        - "CWE-352: Cross-Site Request Forgery (CSRF)"  
+        - "Other"  
+
+  - type: dropdown  
+    attributes:  
+      label: Severity  
+      options:  
+        - "🔴 Critical (immediate risk)"  
+        - "🟠 High (significant risk)"  
+        - "🟡 Medium (manageable risk)"  
+        - "🟢 Low (minor impact)"  
+    validations:  
+      required: true  
+
+  - type: textarea  
+    attributes:  
+      label: Impact Analysis  
+      description: Potential consequences of this issue.  
+      placeholder: |  
+        - Unauthorized data access  
+        - Service disruption  
+
+  - type: textarea  
+    attributes:  
+      label: Mitigation Steps  
+      description: Suggested fixes or temporary workarounds.  
+      placeholder: |  
+        - Rotate exposed API keys.  
+        - Sanitize user input in `search` endpoints.  
+
+  - type: checkboxes  
+    attributes:  
+      label: Compliance Standards  
+      description: Affected regulations or frameworks.  
+      options:  
+        - label: GDPR  
+        - label: HIPAA  
+        - label: PCI DSS  
+        - label: ISO 27001  
+
+  - type: checkboxes  
+    attributes:  
+      label: Responsible Disclosure  
+      options:  
+        - label: I agree not to disclose this issue publicly until resolved.  
+          required: true  
+
+  - type: textarea  
+    attributes:  
+      label: Additional Context  
+      description: Links to logs, PoCs, or related issues.  
+      placeholder: |  
+        - [Proof of Concept](https://example.com/poc)  
+        - Related to #45 (API key rotation)  
+---
