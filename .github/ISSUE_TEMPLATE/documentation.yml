@@ -1,0 +1,54 @@
+---
+name: 📚 Documentation  
+description: Propose updates to documentation (READMEs, guides, API docs).  
+title: "📚 [Documentation]: "  
+labels: ["documentation"]  
+body:  
+  - type: markdown  
+    attributes:  
+      value: "Use this template for documentation changes or additions."  
+
+  - type: checkboxes  
+    attributes:  
+      label: Affected Files  
+      description: Check all documentation files affected by this change.  
+      options:  
+        - label: README.md  
+        - label: docs/ (directory)  
+        - label: CONTRIBUTING.md  
+        - label: API Reference  
+        - label: Other (specify below)  
+    validations:  
+      required: true  
+
+  - type: textarea  
+    attributes:  
+      label: Changes Needed  
+      description: Describe the updates or fixes required.  
+      placeholder: |  
+        Example:  
+        - Update installation instructions for Node.js 20.  
+        - Fix broken links in the "Getting Started" guide.  
+        - Add example for `Geocoder` class usage.  
+    validations:  
+      required: true  
+
+  - type: textarea  
+    attributes:  
+      label: Additional Context  
+      description: Links to related issues, PRs, or external references.  
+      placeholder: |  
+        - Related to #123  
+        - Inspired by [MDN Web Docs](https://developer.mozilla.org)  
+
+  - type: dropdown  
+    attributes:  
+      label: Urgency  
+      description: How critical is this documentation update?  
+      options:  
+        - "🚧 Nice-to-have"  
+        - "⚠️ Important (update needed soon)"  
+        - "🔥 Critical (misleading/incorrect docs)"  
+    validations:  
+      required: true  
+---
