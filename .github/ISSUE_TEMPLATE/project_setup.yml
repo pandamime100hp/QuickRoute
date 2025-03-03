@@ -1,0 +1,39 @@
+---
+name: 🔧 Project Setup
+description: Track foundational setup tasks (CI/CD, docs, repo config).
+title: "🔧 [Project Setup]: "
+labels: ["project setup", "meta"]
+body:
+  - type: markdown
+    attributes:
+      value: "Use this template for project configuration."
+  - type: textarea
+    attributes:
+      label: Goals
+      description: What infrastructure or configuration needs to be set up?
+      placeholder: |
+        Example:
+        - Configure CI/CD pipelines.
+        - Initialize documentation structure.
+        - Set up repository permissions.
+  - type: textarea
+    attributes:
+      label: Infrastructure Components
+      description: List tools or services to configure (e.g., GitHub Actions, Docker, npm).
+  - type: checkboxes
+    attributes:
+      label: Common Tasks
+      options:
+        - label: Create `.github/` directory (ISSUE_TEMPLATE, workflows).
+        - label: Write initial `README.md`.
+        - label: Set up linting/testing frameworks.
+        - label: Configure dependency management (e.g., `package.json`).
+  - type: textarea
+    attributes:
+      label: Deliverables
+      description: Expected outputs (e.g., files, workflows, docs).
+  - type: textarea
+    attributes:
+      label: Dependencies
+      description: Linked issues, PRs, or external resources.
+---
