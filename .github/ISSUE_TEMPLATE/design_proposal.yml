@@ -1,0 +1,89 @@
+---
+name: 🎨 Design Proposal  
+description: Propose technical/architectural designs for features or systems.  
+title: "🎨 [Design]: "  
+labels: ["design"]  
+body:  
+  - type: markdown  
+    attributes:  
+      value: "Use this template for system design discussions and RFCs."  
+
+  - type: textarea  
+    attributes:  
+      label: Objective  
+      description: What problem does this design solve?  
+      placeholder: |  
+        Example:  
+        - Abstract geocoding providers for multi-vendor support  
+        - Design caching layer for address lookup  
+    validations:  
+      required: true  
+
+  - type: textarea  
+    attributes:  
+      label: Background  
+      description: Why is this design needed? Provide context.  
+      placeholder: |  
+        - Current limitations: [...]  
+        - User pain points: [...]  
+
+  - type: textarea  
+    attributes:  
+      label: Proposed Design  
+      description: Technical details, diagrams, or pseudocode.  
+      placeholder: |  
+        ```mermaid  
+        graph TD  
+          A[Client] --> B(Geocoder Service)  
+          B --> C{Provider}  
+          C --> D[TomTom]  
+          C --> E[Google Maps]  
+        ```  
+      render: markdown  
+
+  - type: checkboxes  
+    attributes:  
+      label: Design Deliverables  
+      options:  
+        - label: Architecture Diagram  
+        - label: API Contract  
+        - label: Prototype/PoC  
+        - label: Migration Plan  
+
+  - type: textarea  
+    attributes:  
+      label: Alternatives Considered  
+      description: Other approaches and why they were rejected.  
+      placeholder: |  
+        ### Option 1: [Description]  
+        **Pros**: [...]  
+        **Cons**: [...]  
+
+  - type: textarea  
+    attributes:  
+      label: Impact  
+      description: Performance, security, and compatibility considerations.  
+      placeholder: |  
+        - **Performance**: Expected 30% latency reduction  
+        - **Backwards Compatibility**: Breaking changes require migration  
+        - **Security**: New API keys need rotation  
+
+  - type: dropdown  
+    attributes:  
+      label: Priority  
+      options:  
+        - "🔵 Low"  
+        - "🟢 Medium"  
+        - "🟠 High"  
+        - "🔴 Critical"  
+    validations:  
+      required: true  
+
+  - type: textarea  
+    attributes:  
+      label: Dependencies  
+      description: Related issues, PRs, or external requirements.  
+      placeholder: |  
+        - Depends on #123 (API Gateway upgrade)  
+        - Blocked by !456 (Budget approval)  
+---
