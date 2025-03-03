@@ -51,6 +51,6 @@ body:
         - "🟢 Medium"  
         - "🟠 High"  
         - "🔴 Critical"  
-    validations:  
-      required: true  
+      validations:  
+        required: true  
 ---
