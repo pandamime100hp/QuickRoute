@@ -10,6 +10,7 @@ on:
             - '**/*.txt'
             - 'CHANGELOG.md'
             - '.github/**'
+            - 'LICENSE'
 
     pull_request:
         branches:
@@ -20,6 +21,7 @@ on:
             - '**/*.txt'
             - 'CHANGELOG.md'
             - '.github/**'
+            - 'LICENSE'
 
 jobs:
     placeholder:
