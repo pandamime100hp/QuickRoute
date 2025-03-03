@@ -1,0 +1,58 @@
+---
+name: 🔍 Research  
+description: Investigate tools, libraries, or approaches for a problem.  
+title: "🔍 [Research]: "  
+labels: ["research"]  
+body:  
+  - type: markdown  
+    attributes:  
+      value: "Use this template to track research efforts."  
+
+  - type: textarea  
+    attributes:  
+      label: Objective  
+      description: What problem or question are you researching?  
+      placeholder: |  
+        Example:  
+        - Compare geocoding providers (TomTom vs. Google Maps).  
+        - Evaluate database options for high-throughput analytics.  
+    validations:  
+      required: true  
+
+  - type: textarea  
+    attributes:  
+      label: Key Questions  
+      description: List specific questions to answer.  
+      placeholder: |  
+        1. What are the cost differences?  
+        2. How do rate limits compare?  
+
+  - type: checkboxes  
+    attributes:  
+      label: Deliverables  
+      description: Expected outputs from this research.  
+      options:  
+        - label: Comparison table  
+        - label: Proof of Concept (PoC)  
+        - label: Architecture diagram  
+        - label: Cost analysis  
+
+  - type: textarea  
+    attributes:  
+      label: Resources  
+      description: Links to documentation, articles, or tools.  
+      placeholder: |  
+        - [TomTom API Docs](https://developer.tomtom.com/)  
+        - [Google Geocoding Pricing](https://developers.google.com/maps/documentation/geocoding/usage-and-billing)  
+
+  - type: dropdown  
+    attributes:  
+      label: Priority  
+      options:  
+        - "🔵 Low"  
+        - "🟢 Medium"  
+        - "🟠 High"  
+        - "🔴 Critical"  
+    validations:  
+      required: true  
+---
