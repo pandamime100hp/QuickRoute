@@ -1,0 +1,68 @@
+---
+name: ⚡ Performance  
+description: Track performance improvements, bottlenecks, or benchmarking efforts.  
+title: "⚡ [Performance]: "  
+labels: ["performance"]  
+body:  
+  - type: markdown  
+    attributes:  
+      value: "Use this template to report or improve system performance."  
+
+  - type: textarea  
+    attributes:  
+      label: Description  
+      description: What performance issue or optimization are you addressing?  
+      placeholder: |  
+        Example:  
+        - API response times increased by 200ms after v2.0.  
+        - Memory usage spikes during bulk data processing.  
+    validations:  
+      required: true  
+
+  - type: textarea  
+    attributes:  
+      label: Current vs. Target Metrics  
+      description: Provide quantifiable metrics (e.g., latency, throughput).  
+      placeholder: |  
+        - **Current**: 500ms average latency  
+        - **Target**: ≤ 300ms  
+
+  - type: checkboxes  
+    attributes:  
+      label: Optimization Strategies  
+      description: Check potential approaches to investigate.  
+      options:  
+        - label: Caching  
+        - label: Database indexing/query optimization  
+        - label: Algorithmic improvements  
+        - label: Concurrency/parallelism  
+        - label: Resource scaling (CPU/memory)  
+
+  - type: textarea  
+    attributes:  
+      label: Environment  
+      description: Where was the performance issue observed?  
+      placeholder: |  
+        - OS: [e.g., Linux]  
+        - Node.js Version: [e.g., v20.0.0]  
+        - Hardware: [e.g., AWS t3.medium]  
+
+  - type: dropdown  
+    attributes:  
+      label: Priority  
+      options:  
+        - "🔵 Low"  
+        - "🟢 Medium"  
+        - "🟠 High"  
+        - "🔴 Critical"  
+    validations:  
+      required: true  
+
+  - type: textarea  
+    attributes:  
+      label: Additional Context  
+      description: Links to dashboards, logs, or related issues.  
+      placeholder: |  
+        - [New Relic Dashboard](https://example.com)  
+        - Related to #45 (API latency investigation)  
+---
