@@ -16,8 +16,8 @@ body:
         Example:  
         - Upgrade `lodash` to v4.17.21.  
         - Fix typo in README.  
-      validations:  
-        required: true  
+    validations:  
+      required: true  
 
   - type: textarea  
     attributes:  
@@ -51,6 +51,6 @@ body:
         - "🟢 Medium"  
         - "🟠 High"  
         - "🔴 Critical"  
-      validations:  
-        required: true  
+    validations:  
+      required: true  
 ---
