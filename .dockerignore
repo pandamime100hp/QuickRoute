@@ -1,0 +1,13 @@
+# Folders
+node_modules/
+.git/
+dist/
+coverage/
+
+# Other files
+.gitignore
+.env
+
+# Docker related files
+docker-compose.yml
+Dockerfile
