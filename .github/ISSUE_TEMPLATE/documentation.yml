@@ -14,9 +14,9 @@ body:
       description: Check all documentation files affected by this change.  
       options:  
         - label: README.md  
-        - label: docs/ (directory)  
-        - label: CONTRIBUTING.md  
+        - label: docs/ (directory) 
         - label: API Reference  
+        - label: Wiki
         - label: Other (specify below)  
     validations:  
       required: true  
