@@ -1,0 +1,19 @@
+{
+  "name": "quickroute",
+  "version": "1.0.0",
+  "description": "A TypeScript library for optimized Australian address parsing and validation, designed specifically for logistics operations. Built with extensibility to support multiple geocoding providers, starting with TomTom API integration.",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pandamime100hp/QuickRoute.git"
+  },
+  "author": "Emeliyanov, Makar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pandamime100hp/QuickRoute/issues"
+  },
+  "homepage": "https://github.com/pandamime100hp/QuickRoute#readme"
+}
