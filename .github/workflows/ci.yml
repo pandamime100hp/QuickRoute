@@ -24,10 +24,12 @@ on:
             - 'LICENSE'
 
 jobs:
-    placeholder:
-        name: "🚧 CI Pipeline Not Yet Implemented"
+    unit-tests:
+        name: "Execute unit tests"
         runs-on: ubuntu-latest
         steps:
-            - name: No-op
-              run: echo "CI pipeline is under development. No tasks executed yet."
+            - name: Checkout
+              uses: actions/checkout@v4
+            - name: Install dependencies and run tests
+              run: npm ci
   
