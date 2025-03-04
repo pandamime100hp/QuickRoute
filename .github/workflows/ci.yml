@@ -32,4 +32,12 @@ jobs:
               uses: actions/checkout@v4
             - name: Install dependencies and run tests
               run: npm ci
+    security-scan:
+        name: "Execute security scan"
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+            - name: Audit
+              run: npm audit
   
