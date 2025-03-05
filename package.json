@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/pandamime100hp/QuickRoute/issues"
   },
-  "homepage": "https://github.com/pandamime100hp/QuickRoute#readme"
+  "homepage": "https://github.com/pandamime100hp/QuickRoute#readme",
+  "dependencies": {
+    "lint": "^1.1.2"
+  }
 }
