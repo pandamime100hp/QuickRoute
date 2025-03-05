@@ -4,7 +4,7 @@
   "description": "A TypeScript library for optimized Australian address parsing and validation, designed specifically for logistics operations. Built with extensibility to support multiple geocoding providers, starting with TomTom API integration.",
   "main": "src/index.ts",
   "scripts": {
-    "test": "npm test"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/pandamime100hp/QuickRoute#readme",
   "dependencies": {
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
     "lint": "^1.1.2"
   }
 }
