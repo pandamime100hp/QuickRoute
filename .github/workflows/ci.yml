@@ -1,4 +1,4 @@
-name: CI Pipeline (WIP)
+name: CI Pipeline (🚧 WIP)
 
 on:
     push:
@@ -32,6 +32,8 @@ jobs:
               uses: actions/checkout@v4
             - name: Install dependencies
               run: npm ci
+            - name: Test
+              run: npm test
     security-scan:
         name: "Execute security scan"
         runs-on: ubuntu-latest
