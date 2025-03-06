@@ -34,7 +34,6 @@ jobs:
         steps:
             - name: Approval Check
               run: echo "Manual approval required for release"
-
     semantic-release:
         name: "🚢 Semantic Release"
         needs: approval  # Waits for approval
@@ -50,5 +49,5 @@ jobs:
             - run: npm ci
             - run: npx semantic-release
               env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
                   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
