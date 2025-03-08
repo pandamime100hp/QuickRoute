@@ -13,7 +13,6 @@ A TypeScript library for optimized Australian address parsing and validation, de
 - 🔄 Provider-agnostic architecture (TomTom first)
 - 📦 Tree-shaking friendly ES modules
 - 🧪 100% test coverage enforcement
-- 🐳 Consistent Dockerized testing environment
 
 ## Installation
 
