@@ -46,9 +46,6 @@ jobs:
         needs: approval  # Waits for approval
         if: needs.approval.outputs.approved == 'true'
         runs-on: ubuntu-latest
-        environment: 
-            name: production  # Requires manual approval
-            url: https://github.com/pandamime100hp/quickroute
         permissions:
             contents: write
             pull-requests: write
