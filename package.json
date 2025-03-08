@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/pandamime100hp/QuickRoute.git"
+    "url": "git+https://github.com/pandamime100hp/QuickRoute.git"
   },
   "author": "Emeliyanov, Makar",
   "license": "MIT",
