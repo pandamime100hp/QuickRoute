@@ -39,6 +39,8 @@ jobs:
                   cache: "npm"
             - run: npm ci
             - run: npx eslint
+        outputs:
+            status: ${{ job.status }}
 
     unit-tests:
         name: "Execute unit tests"
@@ -52,6 +54,8 @@ jobs:
                   cache: "npm"
             - run: npm ci
             - run: npm test
+        outputs:
+            status: ${{ job.status }}
 
     security-scan:
         name: "Execute security scan"
@@ -64,4 +68,6 @@ jobs:
                   cache: "npm"
             - run: npm ci
             - run: npm audit
+        outputs:
+            status: ${{ job.status }}
   
