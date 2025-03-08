@@ -5,7 +5,7 @@
       "lib": ["ES2022"],
       "module": "NodeNext",
       "moduleResolution": "NodeNext",
-      "types": ["@typescript-eslint/parser"],
+      "types": ["@typescript-eslint/parser", "jest"],
   
       /* Strict Type-Checking */
       "strict": true,
