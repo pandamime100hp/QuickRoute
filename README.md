@@ -1,6 +1,6 @@
 # QuickRoute
 
-[![npm version](https://img.shields.io/npm/v/quickroute)](https://www.npmjs.com/package/quickroute)
+[![npm version](https://img.shields.io/npm/v/quickroute)](https://www.npmjs.com/package/@pandamime100hp/quickroute)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![CI Status](https://github.com/pandamime100hp/quickroute/actions/workflows/ci.yml/badge.svg)](https://github.com/pandamime100hp/quickroute/actions)
 
