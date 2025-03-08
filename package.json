@@ -1,5 +1,5 @@
 {
-  "name": "quickroute",
+  "name": "@pandamime100hp/quickroute",
   "version": "1.0.0",
   "description": "A TypeScript library for optimized Australian address parsing and validation, designed specifically for logistics operations. Built with extensibility to support multiple geocoding providers, starting with TomTom API integration.",
   "main": "src/index.ts",
