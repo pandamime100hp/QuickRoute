@@ -8,43 +8,24 @@ on:
     workflow_dispatch: {} # Manual trigger
 
 jobs:
-    # build:
-    #     name: "Build"
-    #     runs-on: ubuntu-latest
-    #     steps:
-    #         - uses: actions/setup-node@v4
-    #           with:
-    #               node-version: "lts/*"
-    #         - name: Checkout
-    #           uses: actions/checkout@v4
-    #         - name: Install dependencies
-    #           run: npm ci
-    #         - name: Build
-    #           run: tsc
-
-    approval:
-        name: "🚀 Release Approval"
+    build:
+        name: "📦 Build Production"
         runs-on: ubuntu-latest
-        environment: 
-            name: production  # Requires manual approval
-            url: https://github.com/pandamime100hp/quickroute
-        outputs:
-            approved: ${{ steps.approval.outputs.approved }}
-        if: |
-            (github.event.workflow_run.event == 'workflow_dispatch') || 
-            (github.event.workflow_run.conclusion == 'success')
-
         steps:
-            - name: Wait for Approval
-              id: approval
-              run: |
-                echo "Manual approval required for release"
-                echo "approved=true" >> $GITHUB_OUTPUT
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: "lts/*"
+                  cache: "npm"
+            - run: npm ci
+            - run: npm run build
+            - uses: actions/upload-artifact@v4
+              with:
+                  name: production-build
+                  path: dist
 
     semantic-release:
         name: "🚢 Semantic Release"
-        needs: approval  # Waits for approval
-        if: needs.approval.outputs.approved == 'true'
         runs-on: ubuntu-latest
         environment: 
             name: production  # Requires manual approval
@@ -60,6 +41,7 @@ jobs:
             - uses: actions/setup-node@v4
               with:
                   node-version: "lts/*"
+                  cache: "npm"
             - run: npm ci
             - run: npx semantic-release
               env:

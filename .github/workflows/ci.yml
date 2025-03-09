@@ -29,7 +29,7 @@ concurrency:
 
 jobs:
     linting: 
-        name: "Execute linting"
+        name: 🔍 ESLint Analysis"
         runs-on: ubuntu-latest
         if: |
             !contains(github.event.pull_request.labels.*.name, 'readme') &&
@@ -42,12 +42,26 @@ jobs:
                   cache: "npm"
             - run: npm ci
             - run: npx eslint
-        outputs:
-            status: ${{ job.status }}
+
+    build:
+        name: "🛠️ Build Verification"
+        needs: linting
+        runs-on: ubuntu-latest
+        if: |
+            !contains(github.event.pull_request.labels.*.name, 'readme') &&
+            !contains(github.event.pull_request.title, '[skip ci]')
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: "lts/*"
+                  cache: "npm"
+            - run: npm ci
+            - run: npm run build
+
 
     unit-tests:
-        name: "Execute unit tests"
-        needs: linting
+        name: "🧪 Unit Tests"
         runs-on: ubuntu-latest
         if: |
             !contains(github.event.pull_request.labels.*.name, 'readme') &&
@@ -60,11 +74,9 @@ jobs:
                   cache: "npm"
             - run: npm ci
             - run: npm test
-        outputs:
-            status: ${{ job.status }}
 
     security-scan:
-        name: "Execute security scan"
+        name: "🛡️ Security Audit"
         runs-on: ubuntu-latest
         if: |
             !contains(github.event.pull_request.labels.*.name, 'readme') &&
@@ -77,6 +89,4 @@ jobs:
                   cache: "npm"
             - run: npm ci
             - run: npm audit
-        outputs:
-            status: ${{ job.status }}
   
