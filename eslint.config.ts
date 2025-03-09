@@ -1,60 +1,46 @@
-import js from "@eslint/js";
-import type { Linter } from "eslint";
+import eslint from "@eslint/js";
 import tsParser from "@typescript-eslint/parser";
-import tsPlugin from "@typescript-eslint/eslint-plugin";
 import jestPlugin from "eslint-plugin-jest";
+import globals from "globals";
+import type { Linter } from "eslint";
 
 export default [
-  // Base JS recommended config
-  js.configs.recommended,
-  
-  // TypeScript configuration
+  // Global ignores
+  {
+    ignores: ["dist/", "node_modules/"]
+  },
+
+  // Base JS recommendations
+  eslint.configs.recommended,
+
+  // TypeScript files
   {
     files: ["**/*.ts"],
     languageOptions: {
       parser: tsParser,
       parserOptions: {
-        project: ["./tsconfig.json"],
-        tsconfigRootDir: "./",
+        project: "./tsconfig.json"
+      },
+      globals: {
+        ...globals.node
       }
     },
-    plugins: {
-      "@typescript-eslint": tsPlugin,
-      jest: jestPlugin,
-    },
-    rules: {
-      ...tsPlugin.configs.recommended.rules,
-      "@typescript-eslint/no-unused-vars": "warn",
-      "@typescript-eslint/no-explicit-any": "warn",
-      "prefer-const": "error",
-      "no-console": "warn"
-    },
-    ignores: ["node_modules/", "dist/", "*.config.js"]
-  },
-
-  // Jest configuration
-  {
-    files: ["**/__tests__/**/*.ts"],
-    plugins: { 
-      jest: jestPlugin 
-    },
-    languageOptions: { 
-      globals: {
-        ...jestPlugin.environments.globals.globals
-      } 
-    }, // Auto-injects ALL Jest globals
-    rules: {
-      "jest/no-disabled-tests": "warn",
-      "jest/no-focused-tests": "error"
-    }
-  },
-  
-  // Common rules for all JS/TS files
-  {
-    files: ["**/*.{js,ts}"],
     rules: {
       "semi": ["error", "always"],
-      "quotes": ["error", "double", { "avoidEscape": true }]
+      "quotes": ["error", "double"],
+    },
+  },
+
+  // Jest test files
+  {
+    files: ["**/*.test.ts"],
+    plugins: {
+      jest: jestPlugin
+    },
+    languageOptions: {
+      globals: {
+        ...globals.jest
+      }
     }
   }
 ] satisfies Linter.Config[];
