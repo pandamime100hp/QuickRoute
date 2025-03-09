@@ -29,7 +29,7 @@ concurrency:
 
 jobs:
     linting: 
-        name: 🔍 ESLint Analysis"
+        name: "🔍 ESLint Analysis"
         runs-on: ubuntu-latest
         if: |
             !contains(github.event.pull_request.labels.*.name, 'readme') &&
