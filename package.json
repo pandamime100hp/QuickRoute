@@ -15,6 +15,7 @@
   },
   "author": "Emeliyanov, Makar",
   "license": "MIT",
+  "files": ["dist"],
   "bugs": {
     "url": "https://github.com/pandamime100hp/QuickRoute/issues"
   },
