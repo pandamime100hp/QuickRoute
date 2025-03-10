@@ -30,19 +30,22 @@ jobs:
         needs: build
         environment: 
             name: production
-            url: https://github.com/pandamime100hp/QuickRoute
+            url: https://github.com/pandamime100hp/quickroute
         permissions:
             contents: write
             pull-requests: write
             issues: write
         steps:
+            - uses: actions/checkout@v4
+              with:
+                fetch-depth: 0
             - uses: actions/download-artifact@v4
               with:
-                  name: production-build
-                  path: dist
+                name: production-build
+                path: dist
             - uses: actions/setup-node@v4
               with:
-                  node-version: "lts/*"
+                node-version: "lts/*"
             - run: npx semantic-release
               env:
                   GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
