@@ -1,4 +1,4 @@
-import { AddressInterface, ProviderInterface } from "../provider_interface.js";
+import { Address, Provider } from "../interfaces.js";
 
 // TomTom API docs: https://developer.tomtom.com/search-api/documentation/search-service/fuzzy-search
 
@@ -14,7 +14,7 @@ interface TomTomAddress {
     };
 }
 
-export class TomTomProvider implements ProviderInterface {
+export class TomTom implements Provider {
     apiKey?: string;
     baseUrl: string;
     apiVersion: string;
@@ -33,7 +33,7 @@ export class TomTomProvider implements ProviderInterface {
         }
     }
 
-    async search(query: string): Promise<AddressInterface[]> {
+    async search(query: string): Promise<Address[]> {
         let encodedQuery: string = encodeURIComponent(query);
         let endpoint: string = this.generateEndpoint(encodedQuery);
 
@@ -56,7 +56,7 @@ export class TomTomProvider implements ProviderInterface {
         return (process.env.TOMTOM_COUNTRY_SET?.split(" ") || ["AU"]).join(",");
     }
 
-    mapAddress(results: TomTomAddress): AddressInterface {
+    mapAddress(results: TomTomAddress): Address {
         const address = results.address;
         return {
             streetNumber: address.streetNumber,

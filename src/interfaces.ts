@@ -1,4 +1,4 @@
-export interface AddressInterface {
+export interface Address {
     streetNumber?: string;
     streetName?: string;
     municipality?: string;
@@ -8,6 +8,6 @@ export interface AddressInterface {
     freeformAddress?: string;
 }
 
-export interface ProviderInterface {
-    search(query: string): Promise<AddressInterface[]>;
+export interface Provider {
+    search(query: string): Promise<Address[]>;
 }
