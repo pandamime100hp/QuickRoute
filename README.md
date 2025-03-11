@@ -38,12 +38,18 @@ The TomTom provider allows you to pass in various environment variables which al
 | `TOMTOM_BASE_URL`      | `api.tomtom.com`   | No       |
 | `TOMTOM_API_VERSION`   | `2`                | No       |
 | `TOMTOM_EXTENSION`     | `json`             | No       |
+| `TOMTOM_COUNTRY_SET`    | `AU`               | No       |
 
 __NOTE:__ the API key has to methods of being passed in.
 1. The parameter for the TomTom class (e.g. `new TomTom("YOUR_API_KEY_HERE")`)
 2. The environment variable `TOMTOM_API_KEY`
 
-__NOTE:__ if no environment variable is added to the .env file, the value is given a default value as shown above. 
+__NOTE:__ if no environment variable is added to the .env file, the value is given a default value as shown above.
+
+__NOTE:__ if there is a desire in the future to expand on the API to other countries, there is an environment variable `TOMTOM_COUTRY_SET` available. This value takes a string of country codes separated by commas as below:
+```bash
+TOMTOM_COUNTRYSET=AU,IE,DE,ES
+```
 
 ## Usage
 
