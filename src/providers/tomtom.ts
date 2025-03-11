@@ -1,7 +1,18 @@
-import { ProviderInterface } from "../provider-interface.js";
+import { AddressInterface, ProviderInterface } from "../provider_interface.js";
 
 // TomTom API docs: https://developer.tomtom.com/search-api/documentation/search-service/fuzzy-search
 
+interface TomTomAddress {
+    address: {
+        streetNumber?: string;
+        streetName?: string;
+        municipalitySubdivision?: string;
+        countrySubdivisionCode?: string;
+        postalCode?: string;
+        country?: string;
+        freeformAddress?: string;
+    };
+}
 
 export class TomTomProvider implements ProviderInterface {
     apiKey?: string;
@@ -22,12 +33,19 @@ export class TomTomProvider implements ProviderInterface {
         }
     }
 
-    async search(query: string): Promise<string> {
+    async search(query: string): Promise<AddressInterface[]> {
         let encodedQuery: string = encodeURIComponent(query);
         let endpoint: string = this.generateEndpoint(encodedQuery);
 
         const results: Response = await fetch(endpoint);
-        return JSON.stringify(await results.json());
+
+        if (!results.ok) {
+            const errorText: string = await results.text();
+            throw new Error(`Error: ${results.status} - TomTom API error: ${errorText}`);
+        }
+
+        const data = await results.json() as { results: TomTomAddress[] };
+        return data.results.map(result => this.mapAddress(result));
     }
 
     generateEndpoint(query: string): string {
@@ -36,5 +54,18 @@ export class TomTomProvider implements ProviderInterface {
 
     setCountrySet(): string {
         return (process.env.TOMTOM_COUNTRY_SET?.split(" ") || ["AU"]).join(",");
+    }
+
+    mapAddress(results: TomTomAddress): AddressInterface {
+        const address = results.address;
+        return {
+            streetNumber: address.streetNumber,
+            streetName: address.streetName,
+            municipality: address.municipalitySubdivision,
+            region: address.countrySubdivisionCode,
+            postCode: address.postalCode,
+            country: address.country,
+            freeformAddress: address.freeformAddress
+        };
     }
 }
