@@ -1,4 +1,4 @@
-import { ProviderInterface } from "@/provider-interface";
+import { ProviderInterface } from "../provider-interface.js";
 
 // TomTom API docs: https://developer.tomtom.com/search-api/documentation/search-service/fuzzy-search
 
@@ -27,7 +27,7 @@ export class TomTomProvider implements ProviderInterface {
         let endpoint: string = this.generateEndpoint(encodedQuery);
 
         const results: Response = await fetch(endpoint);
-        return String(await results.json());
+        return JSON.stringify(await results.json());
     }
 
     generateEndpoint(query: string): string {

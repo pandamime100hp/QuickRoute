@@ -1,4 +1,4 @@
-import { TomTomProvider } from "@/index";
+import { TomTomProvider } from "../src/index.js";
 
 
 describe("index", () => {
