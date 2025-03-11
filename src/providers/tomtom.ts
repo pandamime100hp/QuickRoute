@@ -22,11 +22,16 @@ export class TomTom implements Provider {
     extension: string;
     countrySet: string;
 
+    private DEFAULT_BASE_URL: string = "api.tomtom.com";
+    private DEFAULT_API_VERSION: string = "2";
+    private DEFAULT_EXTENSION: string = "json";
+    private DEFAULT_COUNTRY_SET: string = "AU";
+
     constructor(apiKey?: string) {
         this.apiKey = process.env.TOMTOM_API_KEY || apiKey;
-        this.baseUrl = process.env.TOMTOM_BASE_URL || "api.tomtom.com";
-        this.apiVersion = process.env.TOMTOM_API_VERSION || "2";
-        this.extension = process.env.TOMTOM_EXTENSION || "json";
+        this.baseUrl = process.env.TOMTOM_BASE_URL || this.DEFAULT_BASE_URL;
+        this.apiVersion = process.env.TOMTOM_API_VERSION || this.DEFAULT_API_VERSION;
+        this.extension = process.env.TOMTOM_EXTENSION || this.DEFAULT_EXTENSION;
         this.countrySet = this.setCountrySet();
 
         if (!this.apiKey) {
@@ -35,8 +40,8 @@ export class TomTom implements Provider {
     }
 
     async search(query: string): Promise<Address[]> {
-        let encodedQuery: string = encodeURIComponent(query);
-        let endpoint: string = this.generateEndpoint(encodedQuery);
+        const encodedQuery: string = encodeURIComponent(query);
+        const endpoint: string = this.generateEndpoint(encodedQuery);
 
         const results: Response = await fetch(endpoint);
 
@@ -54,7 +59,7 @@ export class TomTom implements Provider {
     }
 
     setCountrySet(): string {
-        return (process.env.TOMTOM_COUNTRY_SET?.split(" ") || ["AU"]).join(",");
+        return (process.env.TOMTOM_COUNTRY_SET?.split(" ") || [this.DEFAULT_COUNTRY_SET]).join(",");
     }
 
     mapAddress(results: TomTomAddress): Address {
