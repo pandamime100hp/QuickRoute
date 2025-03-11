@@ -1,3 +1,8 @@
-test("basic check", () => {
-    expect(true).toBe(true);
+import { TomTomProvider } from "@/index";
+
+
+describe("index", () => {
+    test("index should export TomTomProvider", () => {
+        expect(typeof TomTomProvider).toBe("function");
+    });
 });

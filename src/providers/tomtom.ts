@@ -3,7 +3,7 @@ import { ProviderInterface } from "@/provider-interface";
 // TomTom API docs: https://developer.tomtom.com/search-api/documentation/search-service/fuzzy-search
 
 
-class TomTomProvider implements ProviderInterface {
+export class TomTomProvider implements ProviderInterface {
     apiKey?: string;
     baseUrl: string;
     apiVersion: string;
@@ -38,5 +38,3 @@ class TomTomProvider implements ProviderInterface {
         return (process.env.TOMTOM_COUNTRY_SET?.split(" ") || ["AU"]).join(",");
     }
 }
-
-export default TomTomProvider;
