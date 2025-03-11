@@ -1,4 +1,4 @@
-import TomTomProvider from "@/providers/tomtom";
+import { TomTomProvider } from "@/providers/tomtom";
 
 const TEST_KEY: string = "test-api-key";
 const TEST_BASE_URL: string = "test-base-url";
