@@ -1,3 +1,9 @@
+/**
+ * @license MIT
+ * @copyright (c) 2025 Makar Emeliyanov
+ * See LICENSE file in the project root for full license information.
+ */
+
 export interface Address {
     streetNumber?: string;
     streetName?: string;
