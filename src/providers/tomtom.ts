@@ -14,6 +14,7 @@ interface TomTomAddress {
     };
 }
 
+
 export class TomTom implements Provider {
     apiKey?: string;
     baseUrl: string;
