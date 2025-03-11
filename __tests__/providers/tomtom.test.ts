@@ -1,4 +1,4 @@
-import { TomTomProvider } from "@/providers/tomtom";
+import { TomTomProvider } from "../../src/providers/tomtom.js";
 
 const TEST_KEY: string = "test-api-key";
 const TEST_BASE_URL: string = "test-base-url";
@@ -118,7 +118,7 @@ describe("TomTom search", () => {
         // Check `fetch` was called with correct endpoint
         expect(fetch).toHaveBeenCalledWith(`https://api.tomtom.com/search/2/search/${TEST_QUERY}.json?key=test-api-key&countrySet=AU`);
         // Check `fetch` returned correct data
-        expect(result).toBe(String({ data: "mock-data" }));
+        expect(result).toBe(JSON.stringify({ data: "mock-data" }));
     });
 
     test("search should throw error", async () => {

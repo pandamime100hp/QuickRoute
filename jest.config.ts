@@ -9,7 +9,7 @@ const config: Config.InitialOptions = {
     "!src/**/*.d.ts"
   ],
   moduleNameMapper: {
-    "^@/(.*)$": "<rootDir>/src/$1" // Maps "@/file" to "src/file"
+    "^(\\.{1,2}/.*)\\.js$": "$1"
   }
 };
 

@@ -1,1 +1,1 @@
-export { TomTomProvider } from "@/providers/tomtom";
+export { TomTomProvider } from "./providers/tomtom.js";

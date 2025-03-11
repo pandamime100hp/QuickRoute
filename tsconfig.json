@@ -4,8 +4,7 @@
       "target": "ES2022",
       "lib": ["ES2022"],
       "module": "NodeNext",
-      "moduleResolution": "NodeNext",
-      "types": ["jest"],
+      "types": ["node", "jest"],
   
       /* Strict Type-Checking */
       "strict": true,
@@ -15,11 +14,12 @@
   
       /* Module Resolution */
       "baseUrl": ".",
-      "paths": {
-        "@/*": ["./src/*"]
-      },
-      "rootDir": "./",
+      "rootDir": "./src",
       "outDir": "./dist",
+      "paths": {
+        "*": ["*", "*.js"]
+      },
+      "resolveJsonModule": true,
   
       /* Interop Constraints */
       "esModuleInterop": true,
@@ -36,13 +36,15 @@
     },
     "include": [
       "src/**/*.ts",
-      "__tests__/**/*.ts",
       "eslint.config.ts",
       "jest.config.ts"
     ],
     "exclude": [
       "node_modules",
       "dist",
-      "**/*.spec.ts"
+      "__tests__",
+      "**/*.spec.ts",
+      "jest.config.ts",
+      "eslint.config.ts"
     ]
   }
