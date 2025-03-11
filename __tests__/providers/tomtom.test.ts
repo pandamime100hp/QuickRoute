@@ -1,3 +1,4 @@
+import { AddressInterface } from "../../src/provider_interface.js";
 import { TomTomProvider } from "../../src/providers/tomtom.js";
 
 const TEST_KEY: string = "test-api-key";
@@ -93,12 +94,37 @@ describe("validate country set", () => {
 
 test("generate endpoint should return correct endpoint", () => {
     provider = new TomTomProvider(TEST_KEY);
+    // Validate endpoint generates correctly
     expect(provider.generateEndpoint(TEST_QUERY)).toBe("https://api.tomtom.com/search/2/search/test.json?key=test-api-key&countrySet=AU");
 });
 
 // ########### Test Search ###########
 
 describe("TomTom search", () => {
+    // Sample data returned by TomTom API call
+    const SAMPLE_TOMTOM_ADDRESS = [{
+        address:{
+            streetNumber: "123",
+            streetName: "Main St",
+            municipalitySubdivision: "Sydney",
+            countrySubdivisionCode: "NSW",
+            postalCode: "2000",
+            country: "Australia",
+            freeformAddress: "123 Main St, Sydney NSW 2000, Australia"
+        }
+    }];
+
+    // Sample data returned by provider after mapping
+    const SAMPLE_ADDRESS = [{
+        streetNumber: "123",
+        streetName: "Main St",
+        municipality: "Sydney",
+        region: "NSW",
+        postCode: "2000",
+        country: "Australia",
+        freeformAddress: "123 Main St, Sydney NSW 2000, Australia"
+    }];
+
     // Reset provider before each test
     beforeEach(() => {
         process.env.TOMTOM_API_KEY = TEST_KEY;
@@ -108,24 +134,31 @@ describe("TomTom search", () => {
     // Mock `fetch` Node function
     global.fetch = jest.fn(() => 
         Promise.resolve({ 
-            json: () => Promise.resolve({ data: "mock-data" })
+            json: () => Promise.resolve({ results: SAMPLE_TOMTOM_ADDRESS }),
+            ok: true
         })
     ) as jest.Mock;
 
     test("search should return mock data", async () => {
-        const result: string = await provider.search(TEST_QUERY);
+        const result: AddressInterface[] = await provider.search(TEST_QUERY);
 
         // Check `fetch` was called with correct endpoint
         expect(fetch).toHaveBeenCalledWith(`https://api.tomtom.com/search/2/search/${TEST_QUERY}.json?key=test-api-key&countrySet=AU`);
         // Check `fetch` returned correct data
-        expect(result).toBe(JSON.stringify({ data: "mock-data" }));
+        expect(result).toStrictEqual(SAMPLE_ADDRESS);
     });
 
     test("search should throw error", async () => {
+        // Mock `fetch` Node function
         global.fetch = jest.fn(() => 
-            Promise.reject(new Error("TomTom API error"))
+            Promise.resolve({
+                ok: false,
+                status: 403,
+                text: () => Promise.resolve("No results found")
+            })
         ) as jest.Mock;
 
-        await expect(provider.search(TEST_QUERY)).rejects.toThrow("TomTom API error");
+        // Validate error message is correct
+        await expect(provider.search(TEST_QUERY)).rejects.toThrow("Error: 403 - TomTom API error: No results found");
     });
 });
