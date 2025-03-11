@@ -1,3 +1,10 @@
+/**
+ * @license MIT
+ * @copyright (c) 2025 Makar Emeliyanov
+ * See LICENSE file in the project root for full license information.
+ */
+
+
 import { Address, Provider } from "../interfaces.js";
 
 // TomTom API docs: https://developer.tomtom.com/search-api/documentation/search-service/fuzzy-search
