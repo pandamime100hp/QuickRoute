@@ -1,1 +1,2 @@
-export { TomTom } from "./providers/tomtom.js";
+export * from "./interfaces.js";
+export * from "./providers/tomtom.js";
