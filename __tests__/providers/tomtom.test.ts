@@ -161,4 +161,16 @@ describe("TomTom search", () => {
         // Validate error message is correct
         await expect(provider.search(TEST_QUERY)).rejects.toThrow("Error: 403 - TomTom API error: No results found");
     });
+
+    test("search should return empty array if no addresses found", async () => {
+        global.fetch = jest.fn(() => 
+            Promise.resolve({
+                ok: true,
+                json: () => Promise.resolve({ results: [] })
+            })
+        ) as jest.Mock;
+
+        let address = await provider.search("test-query");
+        expect(address.length).toBe(0);
+    });
 });
